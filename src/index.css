@@ -1,0 +1,66 @@
+body {
+  background: #222222;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  box-sizing: border-box;
+}
+
+.App {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.taskList {
+  width: 95%;
+  display: flex;
+}
+
+.taskList__users {
+  max-width: 100px;
+  min-width: 100px;
+}
+
+.taskList__usersTime {
+  flex: 1;
+  max-width: 100%;
+}
+
+.userInfo {
+  display: flex;
+  width: 100%;
+  height: 25px;
+  background: #424242;
+  flex: 1;
+  color: #afafaf;
+  line-height: 25px;
+  max-width: 100px;
+  display: block;
+  padding-left: 15px;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  padding-right: 5px;
+  border-top: 1px solid #5d5d5d;
+}
+
+.userInfo__timeList {
+  flex: 1;
+  height: 100%;
+  max-width: 100%;
+  border-top: 1px solid #424242;
+}
+
+.userInfo:last-child .userInfo__timeList {
+  border-bottom: 1px solid #424242;
+}
+
+.userInfo:last-child {
+  border-bottom: 1px solid #5d5d5d;
+}
