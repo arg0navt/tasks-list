@@ -7,7 +7,7 @@ const data = [
   {
     id: 0,
     name: "Jon",
-    timeList: [
+    timeLine: [
       {
         start: "120000",
         end: "150000"
@@ -21,7 +21,7 @@ const data = [
   {
     id: 1,
     name: "Bob",
-    timeList: [
+    timeLine: [
       {
         start: "091000",
         end: "112000"
@@ -31,14 +31,14 @@ const data = [
   {
     id: 2,
     name: "Kate",
-    timeList: [
+    timeLine: [
       {
         start: "142000",
         end: "190000"
       }
     ]
   }
-]
+];
 
 class App extends React.Component<{}> {
   render() {
