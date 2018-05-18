@@ -30,6 +30,9 @@ body {
 .taskList__usersTime {
   flex: 1;
   max-width: 100%;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
 }
 
 .userInfo {
@@ -53,11 +56,12 @@ body {
 }
 
 .time-line {
-  height: 25px;
+  height: 26px;
   border-top: 1px solid #525b69;
 }
 
 .time-line:nth-last-child(2) {
+  height: 27px;
   border-bottom: 1px solid #525b69;
 }
 
@@ -92,9 +96,35 @@ body {
 }
 
 .time-measure__item p {
-  color: #fff;
+  color: #c6ccd2;
   font-weight: 100;
   font-size: 7px;
   margin-top: 10px;
   text-align: center;
+}
+.time-line__item {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  height: 25px;
+  background: #17b6c4;
+  cursor: all-scroll;
+}
+
+.time-line__control {
+  width: 3px;
+  height: calc(100% + 6px);
+  margin-top: -3px;
+  background: #ccc;
+  cursor: w-resize;
+}
+
+.time-line__control:first-child{
+  margin-left: -2px;
+  box-shadow: 1px 0 1px 1px rgba(0,0,0,.2);
+}
+
+.time-line__control:last-child{
+  margin-right: -2px;
+  box-shadow: -1px 0 1px 1px rgba(0,0,0,.2);
 }

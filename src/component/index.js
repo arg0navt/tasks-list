@@ -1,7 +1,6 @@
 import React from "react";
 import User from "./user";
 import TimeLine from "./TimeLine";
-import moment from "moment";
 
 type Props = {
   tasks: Array<Object>
@@ -25,9 +24,9 @@ export default class TasksList extends React.Component<Props> {
           {this.props.tasks.map((task) => <User key={task.id} name={task.name} />)}
         </div>
         <div className="taskList__usersTime">
-          {this.props.tasks.map((task) => <TimeLine key={task.id} time={task.timeLine} />)}
+          {this.props.tasks.map((task) => <TimeLine key={task.id} timeSlices={task.timeLine} />)}
           <div className="time-measure">
-            {timeMeasure().map((item) => <div className="time-measure__item"><p>{item}</p></div>)}
+            {timeMeasure().map((item) => <div key={item} className="time-measure__item"><p>{item}</p></div>)}
           </div>
         </div>
       </div>
