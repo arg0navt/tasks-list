@@ -28,14 +28,6 @@ export default class TimeItem extends React.Component {
       }, () => {
         e.target.style.marginLeft = 0;
       })
-    } else {
-      const range = (e.deltaX / widthWrap) * 100;
-      this.setState({
-        start: this.state.start + range,
-        end: this.state.end + range
-      }, () => {
-        e.target.style.marginLeft = 0;
-      })
     }
   }
   render() {
