@@ -11,7 +11,7 @@ const timeMeasure = () => {
   for(let i = -1; i <= 47; i++) {
     if(i < 0) {result.push("00:00")}
     else if (i === 47) {result.push("")}
-    else {result.push(`${i/2 < 10 ? '0'+ (i/2).toFixed() : (i/2).toFixed()}:${!(i % 2) ? 30 : '00'}`)}
+    else {result.push(`${i/2 < 9 ? '0'+ (i/2).toFixed() : (i/2).toFixed()}:${!(i % 2) ? 30 : '00'}`)}
   }
   return result;
 };
