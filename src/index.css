@@ -104,8 +104,6 @@ body {
   text-align: center;
 }
 .time-line__item {
-  display: flex;
-  justify-content: space-between;
   position: absolute;
   height: 25px;
   background: #17b6c4;
@@ -118,14 +116,24 @@ body {
   margin-top: -3px;
   background: #ccc;
   cursor: w-resize;
+  position: absolute;
+  z-index: 2;
 }
 
 .time-line__control:first-child{
-  margin-left: -2px;
+  left: 0;
   box-shadow: 1px 0 1px 1px rgba(0,0,0,.2);
 }
 
 .time-line__control:last-child{
-  margin-right: -2px;
+  right: 0;
   box-shadow: -1px 0 1px 1px rgba(0,0,0,.2);
+}
+
+.time-line__main {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
 }

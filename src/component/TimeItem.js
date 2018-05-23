@@ -57,12 +57,7 @@ export default class TimeItem extends React.Component {
   render() {
     return (
       <Hammer onPan={(e) => this.dragElement(e)} onPanEnd={(e) => this.dragEnd(e)}>
-        <div className="time-line__item" style={{width: `${this.state.end - this.state.start}%`, left: `${this.state.start}%`}}>
-          <div className="time-line__control start"/>
-          <Hammer>
-            <div className="time-line__control end"/>
-          </Hammer>
-        </div>
+        <div className="time-line__item" style={{width: `${this.state.end - this.state.start}%`, left: `${this.state.start}%`}} />
       </Hammer>
     )
   }
