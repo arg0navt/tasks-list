@@ -9,32 +9,12 @@ const data = [
     name: "Jon",
     timeLine: [
       {
-        start: "120000",
-        end: "150000"
+        start: 7200000,
+        end: 15000000
       },
       {
-        start: "170000",
-        end: "174500"
-      }
-    ]
-  },
-  {
-    id: 1,
-    name: "Bob",
-    timeLine: [
-      {
-        start: "091000",
-        end: "112000"
-      }
-    ]
-  },
-  {
-    id: 2,
-    name: "Kate",
-    timeLine: [
-      {
-        start: "142000",
-        end: "190000"
+        start: 17000000,
+        end: 30000000
       }
     ]
   }

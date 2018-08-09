@@ -1,19 +1,15 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import Hammer from "react-hammerjs";
+import TimeLine from "./TimeLine";
 
 export default class TimeItem extends React.Component {
-  constructor(props){
-    super(props);
+  constructor(props, context){
+    super(props, context);
     this.state = {
-      start: null,
-      end: null,
+      start: context.convertMillisecondToWidth(props.start),
+      end: context.convertMillisecondToWidth(props.end),
     };
-  }
-  componentWillMount() {
-    this.setState({
-      start: ((Number(this.props.start.slice(0, 2)) / 24) * 100) + (Number(this.props.start.slice(2, 4) / 1440) * 100),
-      end: ((Number(this.props.end.slice(0, 2)) / 24) * 100) + (Number(this.props.end.slice(2, 4) / 1440) * 100)
-    })
   }
   dragElement(e) {
     const widthWrap = this.props.wrap.refs.line.clientWidth;
@@ -62,3 +58,8 @@ export default class TimeItem extends React.Component {
     )
   }
 }
+
+TimeItem.contextTypes = {
+  convertMillisecondToWidth: PropTypes.func,
+  convertTimeFormat: PropTypes.func
+};

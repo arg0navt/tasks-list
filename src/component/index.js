@@ -1,56 +1,54 @@
+import moment from "moment";
 import React from "react";
+import PropTypes from 'prop-types';
 import User from "./user";
 import TimeLine from "./TimeLine";
 
-type Props = {
-  tasks: Array<Object>
-}
+export const MAX_DURATION = 86400000;
 
-const timeMeasure = () => {
-  const result = [];
-  for (let i = -1; i <= 47; i++) {
-    if (i < 0) {
-      result.push("00:00")
-    }
-    else if (i === 47) {
-      result.push("")
-    }
-    else {
-      result.push(`${i / 2 < 9 ? '0' + (i / 2).toFixed() : (i / 2).toFixed()}:${!(i % 2) ? 30 : '00'}`)
+export default class TasksList extends React.Component {
+  getChildContext() {
+    return {
+      convertMillisecondToWidth: this.convertMillisecondToWidth,
+      convertTimeFormat: this.convertTimeFormat
     }
   }
-  return result;
-};
 
-export default class TasksList extends React.Component<Props> {
-  constructor(props) {
-    super(props);
-    this.state = {
-      text: ""
+  _renderMeasure = () => {
+    for (var i = -1, result = []; i <= 47; i++) {
+      if (i < 0) {
+        result.push("00:00")
+      } else if (i === 47) {
+        result.push("")
+      } else result.push(`${i / 2 < 9 ? '0' + (i / 2).toFixed() : (i / 2).toFixed()}:${!(i % 2) ? 30 : '00'}`)
     }
-  }
-  onChange = (e) => {
-    const reg = new RegExp(/\d/g);
-    const text = e.target.value.replace(reg, "");
-    this.setState({text});
+    return result.map((item) => <div key={item} className="time-measure__item"><p>{item}</p></div>)
   };
+
+  _renderLine = () => this.props.tasks.map((task) => <TimeLine key={task.id} timeSlices={task.timeLine}/>);
+  _renderUserName = () => this.props.tasks.map((task) => <User key={task.id} name={task.name}/>);
+
+  convertMillisecondToWidth = (time) => (time / MAX_DURATION) * 100;
+  convertTimeFormat = (time) => moment.duration(time);
+
   render() {
     return (
-      <div>
-        <div className="taskList">
-          <div className="taskList__users">
-            {this.props.tasks.map((task) => <User key={task.id} name={task.name}/>)}
-          </div>
-          <div className="taskList__usersTime">
-            {this.props.tasks.map((task) => <TimeLine key={task.id} timeSlices={task.timeLine}/>)}
-            <div className="time-measure">
-              {timeMeasure().map((item) => <div key={item} className="time-measure__item"><p>{item}</p></div>)}
-            </div>
+      <div className="taskList">
+        <div className="taskList__users">
+          {this._renderUserName()}
+        </div>
+        <div className="taskList__usersTime">
+          {this._renderLine()}
+          <div className="time-measure">
+            {this._renderMeasure()}
           </div>
         </div>
-        <input type="text" defaultValue={this.state.text} onChange={(e) => this.onChange(e)}/>
-        {this.state.text}
       </div>
     )
   }
 }
+
+TasksList.childContextTypes = {
+  convertMillisecondToWidth: PropTypes.func,
+  convertTimeFormat: PropTypes.func
+};
