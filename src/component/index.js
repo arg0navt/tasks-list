@@ -49,7 +49,7 @@ export default class TasksList extends React.Component<Props> {
           </div>
         </div>
         <input type="text" defaultValue={this.state.text} onChange={(e) => this.onChange(e)}/>
-        {/*{this.state.text}*/}
+        {this.state.text}
       </div>
     )
   }

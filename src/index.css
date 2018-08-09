@@ -108,6 +108,8 @@ body {
   height: 25px;
   background: #17b6c4;
   cursor: all-scroll;
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
 }
 
 .time-line__control {
