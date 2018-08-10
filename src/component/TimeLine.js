@@ -4,7 +4,7 @@ import TimeItem from "./TimeItem";
 export default class TimeLine extends React.Component {
   render() {
     return (
-      <div className="time-line" ref="line">
+      <div className="time-line">
         {this.props.timeSlices.map((item, index) => <TimeItem
           index={index}
           id={this.props.id}
