@@ -34,8 +34,8 @@ export default class TimeItem extends React.Component {
     // }, () => e.target.style.marginLeft = 0);
   }
   render() {
-    const start = this.context.convertMillisecondToWidth(this.props.start);
-    const end = this.context.convertMillisecondToWidth(this.props.end);
+    const start = this.context.convertSecondToWidth(this.props.start);
+    const end = this.context.convertSecondToWidth(this.props.end);
     return (
       <Hammer onPan={(e) => this.dragElement(e)} onPanEnd={(e) => this.dragEnd(e)}>
         <div className="time-line__item" style={{width: `${end - start}%`, left: `${start}%`}} />
@@ -45,7 +45,7 @@ export default class TimeItem extends React.Component {
 }
 
 TimeItem.contextTypes = {
-  convertMillisecondToWidth: PropTypes.func,
+  convertSecondToWidth: PropTypes.func,
   convertTimeFormat: PropTypes.func,
   changeTaskPosition: PropTypes.func
 };
