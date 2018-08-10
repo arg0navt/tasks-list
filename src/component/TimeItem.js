@@ -6,10 +6,11 @@ import TimeLine from "./TimeLine";
 export default class TimeItem extends React.Component {
   dragElement(e) {
     const widthWrap = this.props.wrap.refs.line.clientWidth;
-    const range = e.deltaX < 0 ? ((e.deltaX * -1) / (widthWrap / 100)) : (e.deltaX / (widthWrap / 100));
+    const range = e.deltaX / (widthWrap / 100);
     this.context.changeTaskPosition(range, this.props.id, this.props.index);
   }
   dragEnd(e) {
+    this.context.endChangeTaskPosition(this.props.id, this.props.index);
     // const widthWrap = this.props.wrap.refs.line.clientWidth;
     // this.setState(prevState => {
     //   const range = e.deltaX < 0 ? ((e.deltaX * -1) / (widthWrap / 100)) : (e.deltaX / (widthWrap / 100));
@@ -47,5 +48,6 @@ export default class TimeItem extends React.Component {
 TimeItem.contextTypes = {
   convertSecondToWidth: PropTypes.func,
   convertTimeFormat: PropTypes.func,
-  changeTaskPosition: PropTypes.func
+  changeTaskPosition: PropTypes.func,
+  endChangeTaskPosition: PropTypes.func
 };
