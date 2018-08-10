@@ -7,7 +7,7 @@ const data = [
     name: "Jon",
     timeLine: [
       {
-        start: 72000,
+        start: 7200,
         end: 15000
       },
       {
