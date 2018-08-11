@@ -6,7 +6,7 @@ import TimeLine from "./TimeLine";
 import Hammer from "hammerjs";
 
 export const MAX_DURATION = 86400;
-export const ONE_PROCENT = 864;
+export const ONE_PROCENT = MAX_DURATION / 100;
 
 export default class TasksList extends React.Component {
   constructor(props) {
@@ -54,7 +54,7 @@ export default class TasksList extends React.Component {
     this.setState({wrap});
   }
 
-  initWrap = (wrap) => this.setState({wrap});
+  // initWrap = (wrap) => this.setState({wrap});
 
   getChildContext() {
     return {
@@ -62,7 +62,7 @@ export default class TasksList extends React.Component {
       convertTimeFormat: this.convertTimeFormat,
       changeTaskPosition: this.changeTaskPosition,
       endChangeTaskPosition: this.endChangeTaskPosition,
-      controll: this.state.constructor
+      control: this.state.constructor
     }
   }
 
@@ -108,7 +108,7 @@ export default class TasksList extends React.Component {
           activeTask.prevPosition = {
             start: activeTask.start,
             end: activeTask.end
-          }
+          };
           if (activeTask.prevPosition.end + duration < MAX_DURATION && activeTask.prevPosition.start + duration >= 0) {
             activeTask.start = activeTask.prevPosition.start + duration;
             activeTask.end = activeTask.prevPosition.end + duration;
@@ -117,7 +117,7 @@ export default class TasksList extends React.Component {
       }
       return prevState;
     });
-  }
+  };
 
   endChangeTaskPosition = (id, index) => {
     this.setState(prevState => {
@@ -127,7 +127,7 @@ export default class TasksList extends React.Component {
       }
       return prevState;
     })
-  }
+  };
 
   render() {
     return (
@@ -151,5 +151,5 @@ TasksList.childContextTypes = {
   convertTimeFormat: PropTypes.func,
   changeTaskPosition: PropTypes.func,
   endChangeTaskPosition: PropTypes.func,
-  controll: PropTypes.func
+  control: PropTypes.func
 };
