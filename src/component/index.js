@@ -81,7 +81,7 @@ export default class TasksList extends React.Component {
   _renderUserName = () => this.state.tasks.map((task) => <User key={task.id} name={task.name}/>);
 
   convertSecondToWidth = (time) => (time / MAX_DURATION) * 100;
-  convertTimeFormat = (time) => moment.duration(time);
+  // convertTimeFormat = (time) => moment.duration(time);
 
   changeTaskPosition = (range, id, index) => {
     const duration = Math.trunc(ONE_PROCENT * range);
